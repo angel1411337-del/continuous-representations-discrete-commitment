@@ -207,7 +207,7 @@ Color/style conventions:
 - `ctrl_random_norm`: dashed blue `#4c72b0`
 - `ctrl_self_b_to_b`: dotted orange `#dd8452`
 - `ctrl_pos_shuffle`: dash-dot green `#55a868`
-- Heatmap colormap: `viridis` with `vmin=0.0`
+- Heatmap colormap: `viridis` with `vmin=0.0`, `vmax=13.0` (yellow starts near ~13+)
 
 This lock is intended to prevent silent style drift between reruns and paper-facing figures.
 
