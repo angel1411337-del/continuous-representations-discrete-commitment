@@ -86,8 +86,7 @@ Open `notebooks/02_causal_swap.ipynb`.
 
 Change `MODEL_PRESET` and run all cells.
 
-Outputs: `{MODEL_PRESET}_causal_swap_raw.csv`, `_layer_summary.csv`, `_checks.csv`.
-They are written to `results/`.
+Outputs (all written to `results/`): `{MODEL_PRESET}_causal_swap_raw.csv`, `{MODEL_PRESET}_causal_swap_layer_summary.csv`, `{MODEL_PRESET}_causal_swap_checks.csv`, `{MODEL_PRESET}_causal_swap_plot.png`, `{MODEL_PRESET}_causal_swap_heatmap_main.png`, `{MODEL_PRESET}_causal_swap_report.pdf`.
 
 **Run once for each of the three models.**
 
@@ -126,7 +125,7 @@ The `results/` directory is where run outputs are written.
 To verify the aggregation pipeline without re-running experiments:
 
 1. Ensure the three `*_causal_swap_raw.csv` files are in `results/`
-   (already present in the repository).
+   (generate with notebook 02, or copy from your archived run artifacts).
 2. Run **notebook 04 only**.
 3. All spot-checks should report `PASS`.
 
@@ -190,6 +189,27 @@ To add a model (e.g. Mistral-7B):
 3. Run notebook 03 — the new model will be detected from the new CSVs.
 
 4. Run notebook 04 — spot-check thresholds are model-agnostic.
+
+
+
+## Figure Metric/Color Lock (paper alignment)
+
+The plotting cells in `notebooks/02_causal_swap.ipynb` are locked to the same metric semantics and visual conventions used in the paper figures:
+
+- Figure 1/step-function family: `flip_to_a_rate` (main intervention)
+- Figure 2/transfer family: `delta_margin_mean` (with bootstrap CIs)
+- Figure 4/control overlay family: `delta_margin_mean` for `main_a_to_b`, `ctrl_random_norm`, `ctrl_self_b_to_b`, `ctrl_pos_shuffle`
+- Figure 6/heatmap family: per-prompt `delta_margin` under `main_a_to_b`, pivoted as `pair_idx x layer`
+
+Color/style conventions:
+
+- Main curve (model-specific): GPT-2 `#1f77b4`, Gemma `#2ca02c`, Qwen `#d62728`
+- `ctrl_random_norm`: dashed blue `#4c72b0`
+- `ctrl_self_b_to_b`: dotted orange `#dd8452`
+- `ctrl_pos_shuffle`: dash-dot green `#55a868`
+- Heatmap colormap: `viridis` with `vmin=0.0`
+
+This lock is intended to prevent silent style drift between reruns and paper-facing figures.
 
 ---
 
