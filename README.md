@@ -32,8 +32,7 @@ reproduce/
     └── 04_aggregate_docs_only.ipynb       ← produces paper-ready CSVs  (CPU, ~10 min)
 ```
 
-Results land in `../results/` (the `paper 3/results/` directory, already populated from the
-original run).
+Results land in `results/` inside this repo.
 
 ---
 
@@ -78,7 +77,7 @@ Open `notebooks/01_descriptive_measurements.ipynb`.
 Change `MODEL_PRESET` to one of `'gpt2'`, `'gemma2_2b'`, `'qwen2_1_5b'` and run all cells.
 
 Outputs saved as `{MODEL_PRESET}_m*.csv` in the notebook's working directory.
-Move them to `../results/` when done.
+They are written to `results/` by default.
 
 **Run once for each of the three models.**
 
@@ -88,7 +87,7 @@ Open `notebooks/02_causal_swap.ipynb`.
 Change `MODEL_PRESET` and run all cells.
 
 Outputs: `{MODEL_PRESET}_causal_swap_raw.csv`, `_layer_summary.csv`, `_checks.csv`.
-Move to `../results/`.
+They are written to `results/`.
 
 **Run once for each of the three models.**
 
@@ -97,7 +96,7 @@ Open `notebooks/03_compute_audit_table.ipynb` and run all cells.
 
 This reads the M1–M5 summary CSVs from Step 1 and writes:
 ```
-../results/paper3_cross_model_audit_table.csv
+results/paper3_cross_model_audit_table.csv
 ```
 
 If source CSVs are unavailable for a model (e.g. you skipped Step 1 for GPT-2),
@@ -107,7 +106,7 @@ the notebook falls back to the existing audit table and marks those rows `[archi
 Open `notebooks/04_aggregate_docs_only.ipynb` and run all cells.
 
 Reads the audit table + causal swap raw files + any available per-model M4/M6 files.
-Writes five CSVs to `../results/`:
+Writes five CSVs to `results/`:
 
 | Output file | Paper location | Key content |
 |---|---|---|
@@ -123,10 +122,10 @@ The final cell runs spot-checks against expected values (0.5% tolerance).
 
 ## 4. Fast verification (no GPU required)
 
-The `../results/` directory already contains all outputs from the original run.
+The `results/` directory is where run outputs are written.
 To verify the aggregation pipeline without re-running experiments:
 
-1. Ensure the three `*_causal_swap_raw.csv` files are in `../results/`
+1. Ensure the three `*_causal_swap_raw.csv` files are in `results/`
    (already present in the repository).
 2. Run **notebook 04 only**.
 3. All spot-checks should report `PASS`.
