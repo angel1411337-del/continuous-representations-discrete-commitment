@@ -1,0 +1,21 @@
+model_key,value_name,value,source_notebook,source_date,note
+gpt2,hourglass_ratio_no_l0,3.198685305879005,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,M4 ablation file not retained from original Colab run
+gpt2,hourglass_ratio_with_l0,11.062827823626415,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,Also stored in paper3_cross_model_audit_table.csv as hourglass_edge_mid_ratio
+gpt2,l0_inflation_multiplier,3.4585546139683387,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,Derived: hourglass_ratio_with_l0 / hourglass_ratio_no_l0
+gpt2,late_ramp_ratio,5.596574444615612,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,M5 update norm late/mid ratio; also in audit table
+gpt2,convergence_layer_mean,8.266666666666667,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,M6 per-prompt file not retained; mean over 15 prompts
+gpt2,convergence_layer_std,1.0327955589886444,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,
+gpt2,entropy_mean,5.089172649383545,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,Mean final_entropy over 15 M6 prompts
+gpt2,entropy_std,1.6610860696018312,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,
+gpt2,m6_spearman_rho,0.7314229108719796,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,Spearman(final_entropy vs convergence_layer) p=0.00194 — statistically significant
+gpt2,m6_spearman_p,0.001942904159099885,gpt2_rerun_confirmation_fast.ipynb,2026-02-16,
+gemma2_2b,hourglass_ratio_no_l0,4.7972535148108255,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,M4 ablation file not retained from original Colab run
+gemma2_2b,hourglass_ratio_with_l0,76.53209923253873,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,Large L0 inflation effect (15.95x) — see paper Section 4.2
+gemma2_2b,l0_inflation_multiplier,15.953315578311970,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,
+gemma2_2b,late_ramp_ratio,2.865550280354155,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,
+gemma2_2b,convergence_layer_mean,10.866666666666667,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,M6 per-prompt file not retained; mean over 15 prompts
+gemma2_2b,convergence_layer_std,7.6799057533899715,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,High std reflects wide range of convergence layers in Gemma
+gemma2_2b,entropy_mean,2.886364229520162,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,
+gemma2_2b,entropy_std,0.9914074342626833,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,
+gemma2_2b,m6_spearman_rho,0.34527492661801595,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,Weak correlation p=0.208 — not significant for Gemma
+gemma2_2b,m6_spearman_p,0.20751162997114503,gemma2_2b_comprehensive_from_gpt2.ipynb,2026-02-16,

@@ -1,0 +1,46 @@
+# Paper 3 — Environment lock (best-effort)
+#
+# The original experiments ran on Google Colab Pro+ (February 2026).
+# Exact package versions were not recorded at the time of the run.
+# The versions below are the best-effort reconstruction based on the
+# Colab Pro+ default environment active in that period.
+#
+# For full reproducibility, install with:
+#   pip install -r requirements-lock.txt
+#
+# Hardware used: NVIDIA A100 (80 GB SXM), CUDA 12.4, cuDNN 9.x
+# Python: 3.11.x (Colab default, Feb 2026)
+# OS: Ubuntu 22.04 (Colab VM)
+#
+# NOTE: torch and nnsight are the most version-sensitive packages.
+# If results differ, try the exact torch+CUDA combination below.
+
+# PyTorch (CUDA 12.4 build)
+torch==2.5.1+cu124
+torchvision==0.20.1+cu124
+
+# HuggingFace
+transformers==4.47.1
+tokenizers==0.21.0
+huggingface-hub==0.27.1
+accelerate==1.2.1
+safetensors==0.4.5
+
+# nnsight (intervention library)
+nnsight==0.3.7
+
+# Data
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.5.2
+
+# Plotting
+matplotlib==3.9.3
+seaborn==0.13.2
+
+# Utilities
+tqdm==4.67.1
+pyyaml==6.0.2
+jupyter==1.1.1
+ipykernel==6.29.5

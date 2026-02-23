@@ -1,0 +1,81 @@
+{
+  "_note": "Single source of truth for all prompts used in Paper 3. Extracted verbatim from gpt2_rerun_confirmation_fast.ipynb (convergence/M6) and two_stage_causal_swap_test.ipynb (causal pairs). Notebooks 01-04 load this file rather than defining prompts inline.",
+
+  "convergence_prompts": [
+    "The capital of France is",
+    "Once upon a time, there",
+    "In my experience,",
+    "According to recent studies,",
+    "The most important thing about",
+    "Scientists have discovered that",
+    "When I was young, I",
+    "The main difference between",
+    "It is well known that",
+    "Many people believe that",
+    "The key to understanding",
+    "In the year 2024,",
+    "One of the most common",
+    "The relationship between",
+    "At the end of the day,",
+    "What makes this interesting is",
+    "The fundamental problem with",
+    "Research has shown that",
+    "Looking back on history,",
+    "The future of technology"
+  ],
+
+  "m6_difficulty": {
+    "easy": [
+      "The capital of France is",
+      "Water freezes at",
+      "The color of the sky is",
+      "Hello, my name is",
+      "One plus one equals"
+    ],
+    "medium": [
+      "The relationship between supply and demand suggests that",
+      "In constitutional law, the doctrine of",
+      "The primary difference between mitosis and meiosis is",
+      "According to general relativity,",
+      "The key finding in the latest climate report was"
+    ],
+    "hard": [
+      "The integral of e^(x^2) from 0 to infinity equals",
+      "If P implies Q, and not Q, then by modus tollens",
+      "Considering the geopolitical implications of",
+      "The renormalization group in quantum field theory describes",
+      "The significance of the Riemann hypothesis for the distribution of"
+    ]
+  },
+
+  "causal_pairs": [
+    {"a_prompt": "The capital of France is",              "a_target": "Paris",       "b_prompt": "The capital of Italy is",                         "b_target": "Rome"},
+    {"a_prompt": "The largest planet in our solar system is", "a_target": "Jupiter", "b_prompt": "The red planet is",                               "b_target": "Mars"},
+    {"a_prompt": "The sky on a clear day is",             "a_target": "blue",        "b_prompt": "Fresh grass is usually",                          "b_target": "green"},
+    {"a_prompt": "Three plus four equals",                "a_target": "seven",       "b_prompt": "Four plus four equals",                           "b_target": "eight"},
+    {"a_prompt": "The opposite of hot is",                "a_target": "cold",        "b_prompt": "The opposite of up is",                           "b_target": "down"},
+    {"a_prompt": "An animal that barks is a",             "a_target": "dog",         "b_prompt": "An animal that meows is a",                       "b_target": "cat"},
+    {"a_prompt": "The day after Sunday is",               "a_target": "Monday",      "b_prompt": "The day after Monday is",                         "b_target": "Tuesday"},
+    {"a_prompt": "Humans need",                           "a_target": "oxygen",      "b_prompt": "Fish live in",                                    "b_target": "water"},
+    {"a_prompt": "The continent containing Japan is",     "a_target": "Asia",        "b_prompt": "The continent containing Brazil is",              "b_target": "America"},
+    {"a_prompt": "A doctor works in a",                   "a_target": "hospital",    "b_prompt": "A pilot works in a",                              "b_target": "cockpit"},
+    {"a_prompt": "A triangle has",                        "a_target": "three",       "b_prompt": "A square has",                                    "b_target": "four"},
+    {"a_prompt": "The color of coal is",                  "a_target": "black",       "b_prompt": "The color of snow is",                            "b_target": "white"},
+    {"a_prompt": "The fastest land animal is the",        "a_target": "cheetah",     "b_prompt": "The tallest land animal is the",                  "b_target": "giraffe"},
+    {"a_prompt": "Honey is made by",                      "a_target": "bees",        "b_prompt": "Milk is produced by",                             "b_target": "cows"},
+    {"a_prompt": "A keyboard is used for",                "a_target": "typing",      "b_prompt": "A telescope is used for",                         "b_target": "observing"},
+    {"a_prompt": "The ocean is",                          "a_target": "salty",       "b_prompt": "Most rivers are",                                 "b_target": "fresh"},
+    {"a_prompt": "The first month of the year is",        "a_target": "January",     "b_prompt": "The last month of the year is",                   "b_target": "December"},
+    {"a_prompt": "A unit of digital storage is",          "a_target": "byte",        "b_prompt": "A unit of electrical power is",                   "b_target": "watt"},
+    {"a_prompt": "The author of Hamlet was",              "a_target": "Shakespeare", "b_prompt": "The theory of relativity was developed by",       "b_target": "Einstein"},
+    {"a_prompt": "The primary gas in Earth's atmosphere is", "a_target": "nitrogen", "b_prompt": "The gas humans exhale most is",                   "b_target": "carbon"},
+    {"a_prompt": "A baby dog is called a",                "a_target": "puppy",       "b_prompt": "A baby cat is called a",                          "b_target": "kitten"},
+    {"a_prompt": "The opposite of true is",               "a_target": "false",       "b_prompt": "The opposite of yes is",                          "b_target": "no"},
+    {"a_prompt": "The instrument with piano keys is a",   "a_target": "piano",       "b_prompt": "The instrument with six strings is a",            "b_target": "guitar"},
+    {"a_prompt": "To freeze water, temperature must go",  "a_target": "down",        "b_prompt": "To boil water, temperature must go",              "b_target": "up"},
+    {"a_prompt": "Birds can usually",                     "a_target": "fly",         "b_prompt": "Most fish can",                                   "b_target": "swim"},
+    {"a_prompt": "The sun rises in the",                  "a_target": "east",        "b_prompt": "The sun sets in the",                             "b_target": "west"},
+    {"a_prompt": "A place to borrow books is a",          "a_target": "library",     "b_prompt": "A place to buy food is a",                        "b_target": "market"},
+    {"a_prompt": "Python is a",                           "a_target": "language",    "b_prompt": "Photoshop is a",                                  "b_target": "software"}
+  ]
+}

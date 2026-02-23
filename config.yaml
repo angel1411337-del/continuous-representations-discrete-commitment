@@ -1,0 +1,76 @@
+# Paper 3 — Experiment Configuration
+# Single source of truth for all hyperparameters used across notebooks 01–04.
+# Notebooks load this file via: import yaml; cfg = yaml.safe_load(open('../config.yaml'))
+
+models:
+  gpt2:
+    hf_id: "gpt2"
+    n_layers: 12
+    expected_late_band: [8, 11]   # layers used as late band in causal analysis
+    raw_late_floor: 0.60
+  gemma2_2b:
+    hf_id: "google/gemma-2-2b"
+    n_layers: 26
+    expected_late_band: [22, 25]
+    raw_late_floor: 0.70
+    requires_hf_token: true       # set HF_TOKEN env var before running
+  qwen2_1_5b:
+    hf_id: "Qwen/Qwen2.5-1.5B"
+    n_layers: 28
+    expected_late_band: [24, 27]
+    raw_late_floor: 0.45
+
+experiment:
+  # Randomness — confirmed from source notebooks (all use SEED=42)
+  #
+  # Notebook 01 (descriptive):
+  #   np.random.seed(42) — global NumPy seed at setup
+  #   torch.manual_seed(42 + layer_idx * 1000 + probe_idx) — per-intervention
+  #
+  # Notebook 02 (causal swap):
+  #   SEED = 42; np.random.seed(42); torch.manual_seed(42)
+  #   rng = np.random.default_rng(42) — for position shuffling
+  #   bootstrap_ci calls: seed = SEED+layer, SEED+1000+layer, SEED+7, SEED+8, etc.
+  #
+  # Notebook 04 (aggregation bootstrap):
+  #   np.random.default_rng(bootstrap_seed) per bootstrap call
+  bootstrap_seed: 42
+
+  # Bootstrap (used in notebooks 02 and 04)
+  n_bootstrap: 5000
+  bootstrap_ci_lo: 2.5           # percentile
+  bootstrap_ci_hi: 97.5          # percentile
+
+  # Band definitions (in layers from each end; apply uniformly across models)
+  late_band_size: 4              # last N layers = late band
+  early_band_size: 3             # first N layers = early band
+
+  # M1: Gain crossover (descriptive)
+  m1_n_rand: 50                  # random directions sampled per prompt
+  m1_n_prompts: 10               # prompts used for M1 ablation directions
+
+  # M4: Ablation
+  m4_n_prompts: 10
+
+  # M5: Linear cast (Ridge regression)
+  ridge_alpha: 1.0
+  cast_train_prompts: 10
+  cast_test_prompts: 2
+
+  # Causal swap
+  max_causal_pairs: 24           # max A/B pairs after single-token filtering
+  perturb_scale: 1.0             # norm multiplier for random control vectors
+
+  # Crossover thresholds (used in notebook 03 to derive audit table)
+  m1_crossover_threshold: 0.50   # frac_above_1 threshold for M1 layer
+  m2_crossover_threshold: 0.50   # top1_acc threshold for M2 layer
+  m3_crossover_threshold: 0.50   # cos_final_mean threshold for M3 layer
+
+fast_mode:
+  # Set enabled: true for quick ~30-min verification runs on any GPU.
+  # Results will NOT match paper values exactly (fewer prompts/iterations).
+  enabled: false
+  convergence_prompts: 12        # subset of the 20 convergence prompts
+  m1_n_rand: 24
+  m6_prompts_per_difficulty: 3   # 3 easy + 3 medium + 3 hard (9 total)
+  max_causal_pairs: 8
